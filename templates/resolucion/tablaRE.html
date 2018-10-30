@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Resoluciones Vigentes</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td>Número de resolución </td>
+                <td>Fecha de autorización</td>
+                <td>Serie </td>
+                <td>Número inicial</td>
+                <td>Número final</td>
+                <td>Tipo de documento</td>
+                <td>Creador</td>
+                <td>Opciones</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% if object_list %}
+            {% for resolucion in object_list  %}
+            <tr>
+                <td>{{ resolucion.NumeroResolucion }}</td>
+                <td>{{ resolucion.FechaDeAutorizacion }}</td>
+                <td>{{ resolucion.Serie }}</td>
+                <td>{{ resolucion.NumeroInicial }}</td>
+                <td>{{ resolucion.NumeroFinal }}</td>
+                <td>{{ resolucion.TipoDeDocumento }}</td>
+                <td>{{ resolucion.Operador.Nombre }}</td>
+                <td>
+                    <a href="{% url ' Resoluciones:resolucion_editar' resolucion.NumeroResolucion %}">Editar</a>
+                </td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+</body>
+</html>
