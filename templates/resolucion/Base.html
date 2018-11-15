@@ -1,0 +1,60 @@
+{%load staticfiles%}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">  
+        <link rel=stylesheet href=" {% static 'css/base.css' %}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+       
+    </head>
+<body>
+<div class="sidenav">
+    
+  <a href="#"> <i class="material-icons md-24"> store</i> Ventas</a>
+  <a href="#">  <i class="material-icons md-24"> shopping_cart</i> Compras </a>
+  <a href="#"> <i class="material-icons md-24"> store</i> Productos</a>
+  <a href="#"> <i class="material-icons md-24"> category</i> Resoluciones</a>
+</div>
+
+<div class="header">
+  <h2>Resoluciones</h2>
+
+</div>
+
+<div style="overflow-x:auto;">
+    <table>
+        <thead>
+            <tr>
+                <td>No. de resolución </td>
+                <td>Autorización</td>
+                <td>Serie </td>
+                <td>Número inicial</td>
+                <td>Número final</td>
+                <td>Tipo de documento</td>
+                <td>Creador</td>
+                <td>Opciones</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% if object_list %}
+            {% for resolucion in object_list  %}
+            <tr>
+                <td>{{ resolucion.NumeroResolucion }}</td>
+                <td>{{ resolucion.FechaDeAutorizacion }}</td>
+                <td>{{ resolucion.Serie }}</td>
+                <td>{{ resolucion.NumeroInicial }}</td>
+                <td>{{ resolucion.NumeroFinal }}</td>
+                <td>{{ resolucion.TipoDeDocumento }}</td>
+                <td>{{ resolucion.Operador.Nombre }}</td>
+                <td>
+                    <a href="{% url 'Resoluciones:resolucion_editar' resolucion.NumeroResolucion %}"> <i class="material-icons md-12"> edit</i></a>
+                </td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+     
+</body>
+</html> 

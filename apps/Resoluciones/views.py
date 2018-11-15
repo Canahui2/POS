@@ -8,7 +8,7 @@ from django.urls import reverse_lazy
 #Metodo para la impresion de datos en la tabla de resoluciones
 class tabla_resolucion(ListView):
    model = Resolucion
-   template_name = 'resolucion/tablaRE.html'
+   template_name = 'resolucion/Base.html'
 
 
 #Metodo para el ingreso de datos en el formulario resolucion
